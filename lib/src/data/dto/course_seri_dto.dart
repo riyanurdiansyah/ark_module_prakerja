@@ -14,8 +14,12 @@ class ResponseCourseSeriDTO extends ResponseCourseSeriEntity {
   factory ResponseCourseSeriDTO.fromJson(Map<String, dynamic> json) =>
       ResponseCourseSeriDTO(
         success: json["success"],
-        data: ResponseDataCourseSeriDTO.fromJson(json["data"]),
-        message: ResponseMessageCourseSeriDTO.fromJson(json["message"]),
+        data: json["data"] == null
+            ? emptyDataCourseSeri
+            : ResponseDataCourseSeriDTO.fromJson(json["data"]),
+        message: json["message"] == null
+            ? emptyMessageCourseSeri
+            : ResponseMessageCourseSeriDTO.fromJson(json["message"]),
       );
 }
 
@@ -100,10 +104,12 @@ class MetaDTO extends MetaEntity {
         status: json["status"] ?? 0,
         questions: json["questions"] == null
             ? []
-            : List<QuestionDTO>.from(json["questions"].map((x) => x)),
+            : List<QuestionDTO>.from(
+                json["questions"].map((x) => QuestionDTO.fromJson(x))),
         questions2: json["questions2"] == null
             ? []
-            : List<Question2DTO>.from(json["questions2"].map((x) => x)),
+            : List<Question2DTO>.from(
+                json["questions2"].map((x) => Question2DTO.fromJson(x))),
         max: json["max"],
         passingScore: json["passing_score"] ?? 0,
         retakes: json["retakes"] ?? 0,

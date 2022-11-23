@@ -1,3 +1,4 @@
+import 'package:ark_module_prakerja/src/domain/entities/course_item_entity.dart';
 import 'package:ark_module_prakerja/src/domain/entities/course_seri_entity.dart';
 import 'package:ark_module_prakerja/src/domain/entities/webinar_entity.dart';
 
@@ -36,3 +37,15 @@ final MetaEntity emptyMetaEntity = MetaEntity(
 
 const WebinarEntity emptyWebinar =
     WebinarEntity(startDate: "0", endDate: "0", meetLink: "", sesiUser: "");
+
+final ResponseDataCourseSeriEntity emptyDataCourseSeri =
+    ResponseDataCourseSeriEntity(
+        status: 0, link: "", flag: "", date: "0", nilai: 0);
+
+final ResponseMessageCourseSeriEntity emptyMessageCourseSeri =
+    ResponseMessageCourseSeriEntity(
+        content: "", webinar: emptyWebinar, meta: emptyMetaEntity);
+
+const ResponseDataCourseItemEntity emptyDataCourseItem =
+    ResponseDataCourseItemEntity(
+        currentUnitKey: 0, courseitems: [], remainingDuration: "");
